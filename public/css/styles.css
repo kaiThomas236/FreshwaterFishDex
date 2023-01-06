@@ -1,0 +1,79 @@
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.section {
+    padding: 5%;
+}
+
+#black-square {
+    padding: 20px 20px 0 20px;
+}
+
+.nav-container {
+    background-image: url("../images/navbar-shadow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 14.5vw;
+    max-height: 100%;
+    
+} 
+
+.navbar-brand {
+    margin-left: 5.5%;
+    margin-top: 4%;
+    opacity: 30;
+    /* visibility: hidden; */
+}
+
+.card {
+    background-color: antiquewhite;
+    -webkit-border-bottom-left-radius: 40px;
+    -moz-border-radius-bottomleft: 40px;
+    border-bottom-left-radius: 40px;
+    border: none;
+    box-shadow: 2px 2px 5px black;
+    margin-left: 0;
+}
+
+.card-body {
+    padding-top: 0;
+    padding-bottom:0;
+}
+
+#red-circle {
+    height: 20px;
+    width: 20px;
+    margin: 10px 0 10px 20px;
+}
+
+#dots {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 25px;
+}
+
+::-webkit-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    display: none;
+}
+
+footer {
+    background-color: #670000;
+    color: white;
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
+#fish-detail-img {
+    width: 100%;
+    height: auto;
+}
