@@ -1,20 +1,67 @@
 <%- include('header'); %>
 
 
-<div class="row">
-    <div class="col-12 col-sm-6">
-        <img id="fish-detail-img" src="images/black-square.png" alt="">
+<div class="section container-fluid">
+    <h2><%=fish.commonName%></h2>
+    <div class="row">
+        <div class="col-12 col-sm-6">
+            <img id="fish-detail-img" src="../images/black-square.png" alt="">
+        </div>
+        <div class="col-12 col-sm-6 text-center">
+            <h4>Summary</h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis vitae aspernatur ad nobis facilis
+                itaque praesentium? Nesciunt aut dolorem architecto eaque excepturi expedita obcaecati doloremque
+                veritatis, enim dolorum culpa maiores?</p>
+            <h4>Details</h4>
+            <ul>
+                <li>Scientific Name: <%=fish.scientificName%></li>
+                <li>pH: <%=fish.pH%></li>
+                <li>Temperature: <%=fish.temp%></li>
+                <li>Minimum tank size: <%=fish.tankSize%></li>
+            </ul>
+        </div>
     </div>
-    <div class="col-12 col-sm-6 text-center">
-        <ul>
-            <li>attribute 1</li>
-            <li>attribute 2</li>
-            <li>attribute 3</li>
-            <li>attribute 4</li>
-            <li>attribute 5</li>
-            <li>attribute 6</li>
-            <li>attribute 7</li>
-        </ul>
+</div>
+
+<div class="special-section">
+    <h2>You Might Also Like</h2>
+    <div class="container-fluid d-flex flex-row flex-nowrap overflow-auto pe-5">
+        
+        <div class="card m-2 more-fish-cards">
+            <img id="black-square" class="card-img-bottom" src="../images/black-square.png" alt="Card image cap">
+            <div class="card-body">
+                <img class="lower-images" id="red-circle" src="../images/red-circle.png" alt="">
+                <img class="lower-images" id="dots" src="../images/more_horiz_FILL0_wght400_GRAD0_opsz48.png" alt="">
+            </div>
+        </div>
+        <div class="card m-2 more-fish-cards">
+            <img id="black-square" class="card-img-bottom" src="../images/black-square.png" alt="Card image cap">
+            <div class="card-body">
+                <img class="lower-images" id="red-circle" src="../images/red-circle.png" alt="">
+                <img class="lower-images" id="dots" src="../images/more_horiz_FILL0_wght400_GRAD0_opsz48.png" alt="">
+            </div>
+        </div>
+        <div class="card m-2 more-fish-cards">
+            <img id="black-square" class="card-img-bottom" src="../images/black-square.png" alt="Card image cap">
+            <div class="card-body">
+                <img class="lower-images" id="red-circle" src="../images/red-circle.png" alt="">
+                <img class="lower-images" id="dots" src="../images/more_horiz_FILL0_wght400_GRAD0_opsz48.png" alt="">
+            </div>
+        </div>
+        <div class="card m-2 more-fish-cards">
+            <img id="black-square" class="card-img-bottom" src="../images/black-square.png" alt="Card image cap">
+            <div class="card-body">
+                <img class="lower-images" id="red-circle" src="../images/red-circle.png" alt="">
+                <img class="lower-images" id="dots" src="../images/more_horiz_FILL0_wght400_GRAD0_opsz48.png" alt="">
+            </div>
+        </div>
+        <div class="card m-2 more-fish-cards">
+            <img id="black-square" class="card-img-bottom" src="../images/black-square.png" alt="Card image cap">
+            <div class="card-body">
+                <img class="lower-images" id="red-circle" src="../images/red-circle.png" alt="">
+                <img class="lower-images" id="dots" src="../images/more_horiz_FILL0_wght400_GRAD0_opsz48.png" alt="">
+            </div>
+        </div>
     </div>
 </div>
 

@@ -8,6 +8,10 @@ body {
     padding: 5%;
 }
 
+.special-section {
+    padding: 5% 0 5% 5%;
+}
+
 #black-square {
     padding: 20px 20px 0 20px;
 }
@@ -63,6 +67,16 @@ body {
     display: none;
 }
 
+.more-fish-cards {
+    min-width: 10rem;
+    display: inline-block;
+    
+}
+
+.more-fish-cards-box {
+    overflow-x: scroll;
+}
+
 footer {
     background-color: #670000;
     color: white;
@@ -76,4 +90,8 @@ li {
 #fish-detail-img {
     width: 100%;
     height: auto;
+}
+
+ul {
+    padding-left: 0;
 }
