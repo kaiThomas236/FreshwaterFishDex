@@ -120,7 +120,8 @@ function uploadFish() {
 
 /* TODO:  
 a search function?
-you might also like...? a similarity algorithm? remove dupes*/
+you might also like...? a similarity algorithm? remove dupes
+fix temperature, fix size, is " an escape character?*/
 
 /* DONE:
 show database info on fish details page
