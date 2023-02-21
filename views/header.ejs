@@ -22,12 +22,27 @@
 </head>
 
 <body>
-    <a href="/">
-        <div class="nav-container">
-            <nav class="navbar">
+<div id="page-container">
+<div id="content-wrap">
+
+    <div class="nav-container">
+        <a href="/">
+            <div class="nav-container-inner">
+                <nav class="navbar">
+            
+                </nav>
+                
+            </div>
+        </a>
+
+        <form class="input-group input-group-sm search-bar" action="/search" method="post">
+            <input class="form-control" placeholder="Search" aria-label="Search" type="text" name="searchItem">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </form>
+
         
-            </nav>
-        </div>
-    </a>
+    </div>
 
 

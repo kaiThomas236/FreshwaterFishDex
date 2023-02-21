@@ -1,10 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
 const fs = require('fs');
+const { query } = require("express");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,7 +42,7 @@ app.get("/", function (req, res) {
         } else {
             res.render('home', { fishes: fishList });
         };
-    });    
+    });  
 
 });
 
@@ -76,6 +78,31 @@ app.get("/fish/:fishID", function (req, res) {
             };
         };
     });    
+});
+
+
+app.post("/search", function (req, res) {
+    // console.log(req.body.searchItem);
+    async function run() {
+        const agg = [
+            {
+                '$search': {
+                    'index': 'fishindex',
+                    'text': {
+                        'query': req.body.searchItem,
+                        'path': {
+                            'wildcard': '*'
+                        }
+                    }
+                }
+            }
+        ];
+        const cursor = Fish.aggregate(agg);
+        const results = await cursor;
+        // console.log(results);
+        res.render('searchresults', { fishes: results });
+    }
+    run();
 });
 
 
@@ -117,13 +144,14 @@ function uploadFish() {
 };
 
 
-
 /* TODO:  
-a search function?
-you might also like...? a similarity algorithm? remove dupes
-fix temperature, fix size, is " an escape character?*/
+
+get pictures! add fish!
+
+*/
 
 /* DONE:
+a search function, a search results page   !!!! done!
 show database info on fish details page
 flesh out fish details page
 add ID to db manually so it is not so messy
@@ -132,4 +160,5 @@ use ID to call fish details page
 finish variables on fishdetails
 figure out how to bulk upload fish
 work out display fish name over image on home page
+fix temperature, fix size, is " an escape character?
  */

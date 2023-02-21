@@ -10,6 +10,8 @@ body {
     scrollbar-width: none;
     scroll-behavior: smooth;
     background-color: #FFFCF8;
+    min-height: 100vh;
+    height: 100vh;
 }
 
 li {
@@ -33,6 +35,9 @@ footer {
     color: white;
     padding: 2%;
     text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 /*****************************CLASS SELECTORS*****************************/
@@ -51,9 +56,12 @@ footer {
     padding: 5% 0 5% 5%;
 }
 
-
-
 .nav-container {
+    height: fit-content;
+}
+
+
+.nav-container-inner {
     background-image: url("../images/navbar.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -70,7 +78,49 @@ footer {
     /* visibility: hidden; */
 }
 
+.search-bar, .input-group {
+    margin-top: -5%;
+    width: 40%;
+    position: absolute;
+    right: 0;
+    padding-right: 5%;
+}
 
+.form-control {
+    border: 1px solid #6c757d;
+}
+
+.form-control:focus {
+    border-color: #6c757d;
+    box-shadow: none;
+}
+
+.search-btn, .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    --bs-btn-hover-color: #FAEBD7;
+    --bs-btn-hover-bg: #CE0000;
+    --bs-btn-hover-border-color: #CE0000;
+    --bs-btn-focus-shadow-rgb: 108,117,125;
+    --bs-btn-active-color: #FAEBD7;
+    --bs-btn-active-bg: #670000;
+    --bs-btn-active-border-color: #670000;
+    --bs-btn-active-shadow: none;
+    --bs-btn-box-shadow: none;
+    --bs-btn-focus-box-shadow: none;
+    transition: all 150ms ease-in;
+
+}
+
+.search-btn:active,
+.btn:active {
+    transition: all 150ms ease-in;
+}
+
+.no-results {
+    text-align: center;
+    padding: 5% 8% 5% 8%;
+}
 
 .card {
     background-color: #FAEBD7;
@@ -122,6 +172,7 @@ footer {
 
 .more-fish-name-overlay {
     border-top-left-radius: 10px;
+    max-width: 80%;
 }
 
 
@@ -131,6 +182,15 @@ footer {
 }
 
 /*******************************ID SELECTORS*******************************/
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: calc(4% + 60px);
+}
 
 #fish-image {
     padding: 20px 20px 0 20px;
