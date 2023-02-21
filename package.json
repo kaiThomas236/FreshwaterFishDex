@@ -1,0 +1,25 @@
+{
+  "name": "freshwater_fish-dex",
+  "version": "2.0.0",
+  "description": "A Pokedex for Fishkeepers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kai Thomas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "mongo-tools": "^1.0.0",
+    "mongodb": "^4.12.1",
+    "mongoimport": "^1.0.6",
+    "mongoose": "^6.8.0",
+    "node": "16.0.0",
+    "nodemon": "^2.0.20"
+  }
+}
