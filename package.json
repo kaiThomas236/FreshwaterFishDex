@@ -1,6 +1,6 @@
 {
   "name": "freshwater_fish-dex",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "A Pokedex for Fishkeepers",
   "main": "app.js",
   "scripts": {
