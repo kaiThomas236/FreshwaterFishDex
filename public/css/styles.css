@@ -78,7 +78,7 @@ footer {
     /* visibility: hidden; */
 }
 
-.search-bar, .input-group {
+.search-bar {
     margin-top: -5%;
     width: 40%;
     position: absolute;

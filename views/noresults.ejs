@@ -1,0 +1,16 @@
+<%- include('header'); %>
+
+<div class="section container-fluid">
+    <div class="no-results">
+        <p>Sorry, looks like there aren't any results for that search. If you'd like a fish added you can suggest it here!</p>
+    </div>
+    <form class="input-group input-group-sm" action="/suggest" method="post">
+        <input class="form-control" placeholder="Fish name" aria-label="Suggest a fish - name" type="text" name="suggestion">
+        <input class="form-control" aria-label="Suggest a fish" enctype="multipart/form-data" type="file" accept="image/jpeg, image/png, image/jpg" name="image">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </form>
+</div>
+
+<%- include('footer'); %>

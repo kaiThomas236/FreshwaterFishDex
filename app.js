@@ -1,6 +1,26 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const http = require('http');
+const path = require("path");
 
+const multer = require("multer");
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+});
+const upload = multer({
+    storage: storage, fileFilter: function (req, file, callback) {
+        var ext = path.extname(file.originalname);
+        if (ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+            return callback(new Error('Only images are allowed'))
+        }
+        callback(null, true)
+    }
+}).single('image');
 
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
@@ -8,8 +28,15 @@ mongoose.set('strictQuery', false);
 const fs = require('fs');
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '50mb' }));
+
+app.use(bodyParser.urlencoded({
+    limit: '50mb',
+    extended: true,
+    parameterLimit: 50000
+}));
 app.use(express.static("public"));
+
 app.set('view engine', 'ejs');
 
 mongoose.connect("mongodb+srv://admin-kai:test123@cluster0.dyrs9ij.mongodb.net/fishdexDB");
@@ -19,7 +46,6 @@ const fishSchema = new mongoose.Schema({
     summary: String,
     commonName: String,
     scientificName: String,
-    imagePath: String,
     pH: String, 
     temperature: String,
     tankSize: String,
@@ -98,16 +124,40 @@ app.post("/search", function (req, res) {
         ];
         const cursor = Fish.aggregate(agg);
         const results = await cursor;
-        // console.log(results);
-        res.render('searchresults', { fishes: results });
+        if (results.length != 0) {
+            res.render('searchresults', { fishes: results });
+        } else {
+            res.render('noresults');
+        };
+        
     }
     run();
+    //if this is ever failing check mongodb atlas first, ensure the search index exists
 });
 
 
-app.listen(3000, function () {
-    console.log("Server is running on port 3000!");
+app.post('/suggest', (req, res) => {
+    upload(req, res, (err) => {
+        if (err) {
+            res.status(400).send(err.message);
+        } else {
+            // copy the uploaded image to the public directory
+            console.log(req.file);
+            if (!req.file) {
+                // Handle error when file is not uploaded
+                return res.status(400).send('No file uploaded');
+            }
+            fs.copySync(req.file.path, `public/${req.file.filename}`);
+            res.send('Image uploaded successfully');
+        }
+    });
 });
+
+
+http.createServer(app, function (req, res) {
+}).listen(3000, '127.0.0.1');
+console.log('Server running at http://127.0.0.1:3000/');
+
 
 function uploadFish() {
     fs.readFile('collection.json', 'utf8', (err, jsonString) => {
@@ -125,7 +175,6 @@ function uploadFish() {
                     summary: tempFish.summary,
                     commonName: tempFish.commonName,
                     scientificName: tempFish.scientificName,
-                    imagePath: tempFish.imagePath,
                     pH: tempFish.pH,
                     temperature: tempFish.temperature,
                     tankSize: tempFish.tankSize,
@@ -143,14 +192,18 @@ function uploadFish() {
 };
 
 
+
+// to update db: del all docs thru cmd line, pull csv -> json, insert json to collection, run app locally
+
 /* TODO:  
 
 get pictures! add fish!
 
+
 */
 
 /* DONE:
-a search function, a search results page   !!!! done!
+a search function, a search results page   !!!! done!   ...broken for some reason. fix it.
 show database info on fish details page
 flesh out fish details page
 add ID to db manually so it is not so messy
@@ -161,3 +214,5 @@ figure out how to bulk upload fish
 work out display fish name over image on home page
 fix temperature, fix size, is " an escape character?
  */
+
+
